@@ -16,19 +16,18 @@ func main(){
     player := 0
     if turnNumber % 2 == 1{
       fmt.Println("Player 1's turn")
-      player := 1
+      player = 1
     } else {
       fmt.Println("Player 2's turn")
-      player := 2
+      player = 2
     }
     // var currentMove int
     currentMove := askForPlay()
-    player = player + 0
-    executePlayerMove(currentMove, player, board)
+    board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
     if result > 0{
-      fmt.Printf("Player %d wins!", result)
+      fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
       turnNumber++
@@ -41,16 +40,17 @@ func askForPlay() int{
   fmt.Println("Select a move")
   var moveInt int
   fmt.Scan(&moveInt)
-  fmt.Println("moveInt is", moveInt)
+  // fmt.Println("moveInt is", moveInt)
   return moveInt
 }
 
-func executePlayerMove(moveInt int, player int, b [9]int) {
+func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
   if player == 1{
     b[moveInt] = 1
   }else if player == 2{
     b[moveInt] = 10
   }
+  return b
 }
 
 func presentBoard(b [9]int) {
