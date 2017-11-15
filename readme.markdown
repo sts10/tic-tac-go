@@ -10,6 +10,12 @@ It's not going _great_... right now it's not compiling! This is basically the co
 ./game.go:22:17: player declared and not used
 ```
 
+## Some Notes on My Plan
+
+To check for a winner, I'm using a second array called `sums` that adds up each of the possible wins in the game of tic-tac-toe. (Fun fact: I used this idea (and drew the sketch below) back in 2013 as part of my admission test to The Flatiron School.)
+
+![sums explained](img/map.jpg)
+
 ## Where I've Been Learning Go From
 
 [This great YouTube video](https://www.youtube.com/watch?v=CF9S4QZuV30&feature=youtu.be) as well as ["A Tour of Go"](https://tour.golang.org).
