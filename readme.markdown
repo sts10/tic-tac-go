@@ -1,14 +1,6 @@
 # Tic Tac Go
 
-I'm writing a command line tic-tac-toe game as I try to learn Golang!
-
-It's not going _great_... right now it's not compiling! This is basically the compile error I'm getting as of writing this:
-
-```text
-# command-line-arguments
-./game.go:19:17: player declared and not used
-./game.go:22:17: player declared and not used
-```
+I'm writing a command line tic-tac-toe game as I try to learn Golang! It seems to work OK as of this writing.
 
 ## Some Notes on My Plan
 
