@@ -1,16 +1,12 @@
 package main
 
-import ("fmt"
-// "bufio"
-// "os"
-// "strconv"
-)
+import ("fmt")
 
 func main(){
   gameOver := false
   board := [9]int{0,0,0,0,0,0,0,0,0}
-  // testBoard := [9]int{1,2,3,4,5,6,7,8,9}
   turnNumber := 1
+
   for gameOver != true{
     presentBoard(board)
     player := 0
@@ -21,7 +17,7 @@ func main(){
       fmt.Println("Player 2's turn")
       player = 2
     }
-    // var currentMove int
+
     currentMove := askForPlay()
     board = executePlayerMove(currentMove, player, board)
 
