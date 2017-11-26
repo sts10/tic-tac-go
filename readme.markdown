@@ -8,6 +8,10 @@ To check for a winner, I'm using a second array called `sums` that adds up each 
 
 ![sums explained](img/map.png)
 
+## Blog Post 
+
+**Here is [a long blog post I wrote about making this little game](https://sts10.github.io/2017/11/18/trying-go-and-rust.html)**, first in Golang, then in [Rust](https://github.com/sts10/rusty-tac).
+
 ## Where I've Been Learning Go From
 
 [This great YouTube video](https://www.youtube.com/watch?v=CF9S4QZuV30&feature=youtu.be) as well as ["A Tour of Go"](https://tour.golang.org).
