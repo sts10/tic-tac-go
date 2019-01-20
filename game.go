@@ -22,11 +22,17 @@ func main(){
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
-    if result > 0{
+    if result > 0 {
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
       turnNumber++
+    }
+
+    // Cat's game
+    if turnNumber == 10 {
+      fmt.Printf("Cat's Game!\n\n")
+      gameOver = true
     }
   }
 
