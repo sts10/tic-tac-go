@@ -28,6 +28,9 @@ func main(){
 
     result := checkForWin(board)
     if result > 0 {
+      // Adding winner board
+      presentBoard(board)
+      
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
