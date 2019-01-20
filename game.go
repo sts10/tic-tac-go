@@ -18,9 +18,25 @@ func main(){
       player = 2
     }
 
+    
     currentMove := askForPlay()
-    board = executePlayerMove(currentMove, player, board)
+    // Prevent out-of-bounds moves
+    if currentMove > 8 {
+      currentMove = askForPlay()
+    }
 
+    /*if turnNumber > 1 {
+      for v := range board {
+        if v == 1 {
+          fmt.Println("Illegal Move! Pick an unoccupied space.")
+        } else if v == 10 {
+          fmt.Println("Illegal Move! Pick an unoccupied space.")
+        }
+      }  
+    }*/
+
+    board = executePlayerMove(currentMove, player, board)
+    
     // Press q to quit
     /*if currentMove == 113 {
       gameOver = true
@@ -30,7 +46,7 @@ func main(){
     if result > 0 {
       // Adding winner board
       presentBoard(board)
-      
+
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
@@ -67,8 +83,12 @@ func askForPlay() int{
   fmt.Println("Select a move")
   var moveInt int
   fmt.Scan(&moveInt)
-  // fmt.Println("moveInt is", moveInt)
-  return moveInt
+  
+  if moveInt > 8 {
+    fmt.Println("Illegal Move! Pick a number 0-8.")
+    }
+    fmt.Println("moveInt is", moveInt)
+    return moveInt
 }
 
 func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
