@@ -21,6 +21,11 @@ func main(){
     currentMove := askForPlay()
     board = executePlayerMove(currentMove, player, board)
 
+    // Press q to quit
+    /*if currentMove == 113 {
+      gameOver = true
+    }*/
+
     result := checkForWin(board)
     if result > 0 {
       fmt.Printf("Player %d wins!\n\n", result)
@@ -34,6 +39,23 @@ func main(){
       fmt.Printf("Cat's Game!\n\n")
       gameOver = true
     }
+
+    // Play again
+    /*if gameOver == true {
+      fmt.Println("Play again? (y/n)")
+      var playAgain int
+      fmt.Scan(&playAgain)
+
+      if playAgain == 121 {
+        
+      }
+      else if playAgain == 110 {
+
+      }
+      else {
+        fmt.Println("Type y to play again or n to quit")
+      }
+    }*/
   }
 
 }
@@ -86,6 +108,10 @@ func checkForWin(b [9]int) int {
   sums[2] = b[1]+b[4]+b[7]
   sums[3] = b[2]+b[5]+b[8]
   sums[4] = b[0]+b[4]+b[8]
+  // Adding 3 missing win conditions
+  sums[5] = b[6]+b[7]+b[8]
+  sums[6] = b[3]+b[4]+b[5]
+  sums[7] = b[0]+b[1]+b[2]
 
   for _, v := range sums {
     if v == 3{
