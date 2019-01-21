@@ -28,10 +28,10 @@ func main(){
       // Prevent out-of-bounds moves
       if currentMove < 9 {
         illegalMove := false
-        for i := 0; i < 8; i++ {
+        for i := 0; i < 9; i++ {
           // Prevent illegal moves
           if board[i] != 0 && currentMove == i {
-            fmt.Println("Illegal Move! Pick an unoccupied space.")
+            fmt.Println("You mark the", currentMove, "frame, you're entering a world of pain! Pick an unoccupied space.")
             illegalMove = true
             break
           }
