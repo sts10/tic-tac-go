@@ -25,9 +25,9 @@ func main(){
       if currentMove == 9 {
         return
       }
-      illegalMove := false
       // Prevent out-of-bounds moves
       if currentMove < 9 {
+        illegalMove := false
         for i := 0; i < 8; i++ {
           // Prevent illegal moves
           if board[i] != 0 && currentMove == i {
