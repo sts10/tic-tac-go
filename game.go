@@ -21,32 +21,31 @@ func main(){
     
     currentMove := askForPlay()
     // Prevent out-of-bounds moves
-    if currentMove > 8 {
+    if currentMove > 9 {
       currentMove = askForPlay()
     }
 
-    /*if turnNumber > 1 {
+    // Quit with '9'
+    if currentMove == 9 {
+      return
+    }
+
+    if turnNumber > 1 {
+      // I should probably make this a function
       for v := range board {
-        if v == 1 {
+        //fmt.Println("board v, currentMove, v", board[v], currentMove, v)
+        if board[v] != 0 && v == currentMove {
           fmt.Println("Illegal Move! Pick an unoccupied space.")
-        } else if v == 10 {
-          fmt.Println("Illegal Move! Pick an unoccupied space.")
+          currentMove = askForPlay()
         }
       }  
-    }*/
+    }
 
     board = executePlayerMove(currentMove, player, board)
-    
-    // Press q to quit
-    /*if currentMove == 113 {
-      gameOver = true
-    }*/
 
     result := checkForWin(board)
     if result > 0 {
-      // Adding winner board
-      presentBoard(board)
-
+      presentBoard(board) // Adding winner board
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
@@ -55,39 +54,23 @@ func main(){
 
     // Cat's game
     if turnNumber == 10 {
+      presentBoard(board) // Adding cat's game board
       fmt.Printf("Cat's Game!\n\n")
       gameOver = true
     }
-
-    // Play again
-    /*if gameOver == true {
-      fmt.Println("Play again? (y/n)")
-      var playAgain int
-      fmt.Scan(&playAgain)
-
-      if playAgain == 121 {
-        
-      }
-      else if playAgain == 110 {
-
-      }
-      else {
-        fmt.Println("Type y to play again or n to quit")
-      }
-    }*/
   }
-
 }
 
 func askForPlay() int{
-  fmt.Println("Select a move")
+  fmt.Println("Select a move or 9 to quit")
   var moveInt int
   fmt.Scan(&moveInt)
   
-  if moveInt > 8 {
+  //fmt.Println("moveInt is", moveInt)
+
+  if moveInt > 9 {
     fmt.Println("Illegal Move! Pick a number 0-8.")
     }
-    fmt.Println("moveInt is", moveInt)
     return moveInt
 }
 
