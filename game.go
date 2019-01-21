@@ -6,6 +6,7 @@ func main(){
   gameOver := false
   board := [9]int{0,0,0,0,0,0,0,0,0}
   turnNumber := 1
+  var currentMove int
 
   for gameOver != true{
     presentBoard(board)
@@ -18,27 +19,27 @@ func main(){
       player = 2
     }
 
-    
-    currentMove := askForPlay()
-    // Prevent out-of-bounds moves
-    if currentMove > 9 {
+    for {
       currentMove = askForPlay()
-    }
-
-    // Quit with '9'
-    if currentMove == 9 {
-      return
-    }
-
-    if turnNumber > 1 {
-      // I should probably make this a function
-      for v := range board {
-        //fmt.Println("board v, currentMove, v", board[v], currentMove, v)
-        if board[v] != 0 && v == currentMove {
-          fmt.Println("Illegal Move! Pick an unoccupied space.")
-          currentMove = askForPlay()
+      // Quit with '9'
+      if currentMove == 9 {
+        return
+      }
+      illegalMove := false
+      // Prevent out-of-bounds moves
+      if currentMove < 9 {
+        for i := 0; i < 8; i++ {
+          // Prevent illegal moves
+          if board[i] != 0 && currentMove == i {
+            fmt.Println("Illegal Move! Pick an unoccupied space.")
+            illegalMove = true
+            break
+          }
         }
-      }  
+        if illegalMove == false {
+          break
+        }
+      }
     }
 
     board = executePlayerMove(currentMove, player, board)
@@ -62,16 +63,16 @@ func main(){
 }
 
 func askForPlay() int{
-  fmt.Println("Select a move or 9 to quit")
+  fmt.Println("Select a move or enter 9 to quit")
   var moveInt int
   fmt.Scan(&moveInt)
   
   //fmt.Println("moveInt is", moveInt)
 
   if moveInt > 9 {
-    fmt.Println("Illegal Move! Pick a number 0-8.")
-    }
-    return moveInt
+    fmt.Println("OVER THE LINE! Pick a number 0-8.")
+  }
+  return moveInt
 }
 
 func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
