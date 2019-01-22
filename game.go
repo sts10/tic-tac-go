@@ -6,7 +6,6 @@ func main(){
   gameOver := false
   board := [9]int{0,0,0,0,0,0,0,0,0}
   turnNumber := 1
-  var currentMove int
 
   for gameOver != true{
     presentBoard(board)
@@ -19,59 +18,29 @@ func main(){
       player = 2
     }
 
-    for {
-      currentMove = askForPlay()
+    currentMove := askForPlay()
       // Quit with '9'
       if currentMove == 9 {
         return
       }
-      // Prevent out-of-bounds moves
-      if currentMove < 9 {
-        illegalMove := false
-        for i := 0; i < 9; i++ {
-          // Prevent illegal moves
-          if board[i] != 0 && currentMove == i {
-            fmt.Println("You mark the", currentMove, "frame, you're entering a world of pain! Pick an unoccupied space.")
-            illegalMove = true
-            break
-          }
-        }
-        if illegalMove == false {
-          break
-        }
-      }
-    }
-
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
-    if result > 0 {
-      presentBoard(board) // Adding winner board
+    if result > 0{
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
     } else {
       turnNumber++
     }
-
-    // Cat's game
-    if turnNumber == 10 {
-      presentBoard(board) // Adding cat's game board
-      fmt.Printf("Cat's Game!\n\n")
-      gameOver = true
-    }
   }
+
 }
 
 func askForPlay() int{
-  fmt.Println("Select a move or enter 9 to quit")
+  fmt.Println("Select a move")
   var moveInt int
   fmt.Scan(&moveInt)
-  
-  //fmt.Println("moveInt is", moveInt)
-
-  if moveInt > 9 {
-    fmt.Println("OVER THE LINE! Pick a number 0-8.")
-  }
+  // fmt.Println("moveInt is", moveInt)
   return moveInt
 }
 
@@ -115,10 +84,6 @@ func checkForWin(b [9]int) int {
   sums[2] = b[1]+b[4]+b[7]
   sums[3] = b[2]+b[5]+b[8]
   sums[4] = b[0]+b[4]+b[8]
-  // Adding 3 missing win conditions
-  sums[5] = b[6]+b[7]+b[8]
-  sums[6] = b[3]+b[4]+b[5]
-  sums[7] = b[0]+b[1]+b[2]
 
   for _, v := range sums {
     if v == 3{
