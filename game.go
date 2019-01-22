@@ -57,7 +57,7 @@ func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
       fmt.Println("Please pick an unoccupied space.")
       legalMove = false
     }
-  } 
+  }
   switch legalMove {
   case true:
     if player == 1{
@@ -68,6 +68,7 @@ func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
   case false:
     moveInt = askForPlay()
     b = executePlayerMove(moveInt, player, b)
+  }
 
   // Check for out-of-bounds
   for moveInt > 9 {
