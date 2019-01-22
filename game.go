@@ -19,10 +19,6 @@ func main(){
     }
 
     currentMove := askForPlay()
-      // Quit with '9'
-      if currentMove == 9 {
-        return
-      }
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
@@ -31,6 +27,12 @@ func main(){
       gameOver = true
     } else {
       turnNumber++
+    }
+    // Cat's game
+    if turnNumber == 10 {
+      presentBoard(board) // Adding cat's game board
+      fmt.Printf("Cat's Game!\n\n")
+      gameOver = true
     }
   }
 
