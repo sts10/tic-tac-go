@@ -49,6 +49,26 @@ func askForPlay() int{
 }
 
 func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
+
+  // Check for occupied spaces
+  legalMove := true
+  for i := 0; i < 9; i++ {
+    if b [i] != 0 && moveInt == i {
+      fmt.Println("Please pick an unoccupied space.")
+      legalMove = false
+    }
+  } 
+  switch legalMove {
+  case true:
+    if player == 1{
+      b[moveInt] = 1
+    }else if player == 2{
+      b[moveInt] = 10
+    }
+  case false:
+    moveInt = askForPlay()
+    b = executePlayerMove(moveInt, player, b)
+
   // Check for out-of-bounds
   for moveInt > 9 {
       fmt.Println("Please enter a number under 10.")
