@@ -19,6 +19,10 @@ func main(){
     }
 
     currentMove := askForPlay()
+      // Quit with '9'
+      if currentMove == 9 {
+        return
+      }
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
