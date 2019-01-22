@@ -19,10 +19,6 @@ func main(){
     }
 
     currentMove := askForPlay()
-    // Quit with '9'
-    if currentMove == 9 {
-      return
-    }
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
@@ -50,7 +46,7 @@ func executePlayerMove(moveInt int, player int, b [9]int) [9]int {
       fmt.Println("Please enter a number under 10.")
       moveInt = askForPlay()
   }
-  
+
   if player == 1{
     b[moveInt] = 1
   }else if player == 2{
