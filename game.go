@@ -22,20 +22,21 @@ func main(){
     board = executePlayerMove(currentMove, player, board)
 
     result := checkForWin(board)
-    if result > 0{
+    switch result {
+    case 0:
+      turnNumber++
+    case 1:
       fmt.Printf("Player %d wins!\n\n", result)
       gameOver = true
-    } else {
-      turnNumber++
-    }
-    // Cat's game
-    if turnNumber == 10 {
+    case 2:
+      fmt.Printf("Player %d wins!\n\n", result)
+      gameOver = true
+    case 3:
       presentBoard(board) // Adding cat's game board
       fmt.Printf("Cat's Game!\n\n")
       gameOver = true
     }
   }
-
 }
 
 func askForPlay() int{
@@ -92,6 +93,14 @@ func checkForWin(b [9]int) int {
       return 1
     } else if v == 30{
       return 2
+    }
+  }
+  // Check for cat's game
+  for i := 0; i < 9; i++ {
+    if b [i] == 0 {
+      break
+    } else if i == 8 && b [i] != 0 {
+      return 3
     }
   }
   return 0
