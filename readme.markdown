@@ -2,6 +2,10 @@
 
 I'm writing a command line tic-tac-toe game as I try to learn Golang! It seems to work OK as of this writing.
 
+## Running
+
+`go run game.go`
+
 ## Some Notes on My Plan
 
 To check for a winner, I'm using a second array called `sums` that adds up each of the possible wins in the game of tic-tac-toe. (Fun fact: I used this idea (and drew the sketch below) back in 2013 as part of my admission test to The Flatiron School.)
