@@ -9,13 +9,11 @@ func main(){
 
   for gameOver != true{
     presentBoard(board)
-    player := 0
-    if turnNumber % 2 == 1{
+    player := turnNumber % 2 + 1;
+    if player == 1 {
       fmt.Println("Player 1's turn")
-      player = 1
     } else {
       fmt.Println("Player 2's turn")
-      player = 2
     }
 
     currentMove := askForPlay()
