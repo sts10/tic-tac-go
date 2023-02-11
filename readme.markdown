@@ -2,6 +2,8 @@
 
 I'm writing a command line tic-tac-toe game as I try to learn Golang! It seems to work OK as of this writing.
 
+**Note from Feb 10, 2023**: [Golang maintainers are discussing adding telemetry to the Go toolchain](https://github.com/golang/go/discussions/58409).
+
 ## Running
 
 `go run game.go`
