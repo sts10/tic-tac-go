@@ -11,7 +11,8 @@ func main() {
 
 	for gameOver != true {
 		presentBoard(board)
-		player := turnNumber%2 + 1
+		// Not great, but I think this works.
+		player := (turnNumber-1)%2 + 1
 		if player == 1 {
 			fmt.Println("Player 1's turn")
 		} else {

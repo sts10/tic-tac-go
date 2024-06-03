@@ -4,7 +4,7 @@ I'm writing a command line tic-tac-toe game as I try to learn Golang! It seems t
 
 ## Running
 
-`go run game.go`
+`go run .`
 
 ## Some Notes on My Plan
 
